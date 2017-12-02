@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MeritApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+
+    <string name="title_blogger">Blogger</string>
+    <string name="title_business">Business</string>
+    <string name="title_sat_prep">SAT prep</string>
+    <string name="title_creative">Creative</string>
+    <string name="title_ted_talk">Ted Talk</string>
+
+</resources>
