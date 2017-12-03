@@ -85,7 +85,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 Log.e("Ordinal", String.valueOf(response.body().get(0).getOrdinal()));
                 Log.e("Name", response.body().get(0).getName());
                 Log.e("Desc", response.body().get(0).getDesc());
-                Log.e("Owner", String.valueOf(response.body().get(0).getOwner()));
+                Log.e("Owner", response.body().get(0).getOwner());
                 Log.e("Views", String.valueOf(response.body().get(0).getViews()));
                 mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
                 mTabHost.setup(MainActivity.this, getSupportFragmentManager(), android.R.id.tabcontent);
@@ -96,7 +96,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     args.putInt("Ordinal", category.getOrdinal());
                     args.putString("Name", category.getName());
                     args.putString("Desc", category.getDesc());
-                    args.putInt("Owner", category.getOwner());
+                    args.putString("Owner", category.getOwner());
                     args.putInt("Views", category.getViews());
                     mTabHost.addTab(
                             mTabHost.newTabSpec("tag" + i).setIndicator(getTabIndicator(mTabHost.getContext(), category.getName(), android.R.drawable.star_on)),

@@ -11,7 +11,7 @@ public class Templates {
     public String name;
     public String description;
     public int difficulty;
-    public int owner;
+    public String owner;
     public int views;
 
 
@@ -63,11 +63,11 @@ public class Templates {
         this.difficulty = difficulty;
     }
 
-    public int getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(int owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 

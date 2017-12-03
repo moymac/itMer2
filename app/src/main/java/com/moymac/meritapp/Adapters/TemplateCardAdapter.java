@@ -1,4 +1,4 @@
-package com.moymac.meritapp;
+package com.moymac.meritapp.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -11,6 +11,8 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.moymac.meritapp.R;
+import com.moymac.meritapp.TemplateItem;
 import com.squareup.picasso.Picasso;
 
 

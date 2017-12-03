@@ -9,5 +9,8 @@
     <string name="title_sat_prep">SAT prep</string>
     <string name="title_creative">Creative</string>
     <string name="title_ted_talk">Ted Talk</string>
+    <string name="collapse">COLLAPSE</string>
+    <string name="start_writing">START WRITING</string>
+    <string name="projects">PROJECTS</string>
 
 </resources>

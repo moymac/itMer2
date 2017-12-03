@@ -15,11 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.moymac.meritapp.Adapters.StepsAdapter;
+import com.moymac.meritapp.Adapters.TemplateCardAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +36,9 @@ public class FragmentTab extends Fragment {
     private Context mContext;
     private ApiInterface apiInterface;
     private ListView theListView;
-    private ListView stepsListView;
+    private RelativeLayout stepsRelativeLayout;
     ProgressBar progressBar;
-    //RelativeLayout stepsView;
+    Context currentCardContext;
 
     RelativeLayout mRelativeLayout;
 
@@ -57,7 +58,7 @@ public class FragmentTab extends Fragment {
         int catOrdinal = args.getInt("Ordinal");
         String catName = args.getString("Name");
         String catDesc = args.getString("Desc");
-        int catOwner = args.getInt("Owner");
+        String catOwner = args.getString("Owner");
         int catViews = args.getInt("Views");
 
         createApiInterface();
@@ -105,7 +106,7 @@ public class FragmentTab extends Fragment {
                 Log.e("Ordinal", String.valueOf(template.getOrdinal()));
                 Log.e("Name", template.getName());
                 Log.e("Description", template.getDescription());
-                Log.e("Owner", String.valueOf(template.getOwner()));
+                Log.e("Owner", template.getOwner());
                 Log.e("Views", String.valueOf(template.getViews()));
 
                 items.add(new TemplateItem("https://image.flaticon.com/icons/png/128/181/181549.png",template.getName(), "author", template.getDescription(),"EASY",1,30, "20 mins"));
@@ -116,7 +117,10 @@ public class FragmentTab extends Fragment {
             theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    currentCardContext = view.getContext();
                     apiInterface.getSteps(responseList.get(position).id).enqueue(stepsCallback);
+
+
                 }
             });
         }
@@ -138,8 +142,12 @@ public class FragmentTab extends Fragment {
             Log.e("the call", call.toString());
             for(Steps step : responseList){
                 //http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png
-               // items.add(new StepItem())
+               items.add(new StepItem("http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png",step.getName(),"HARD",3,1.0,"20 mins","3 CHILDREN STEPS","•Brainstorm ideas for a subject\\n•Understand why you chose them\\n•Communicate the core value",0.99));
+
             }
+            stepsRelativeLayout = theListView.findViewById(R.id.template_card_view);
+            final StepsAdapter adapter = new StepsAdapter(currentCardContext, items);
+
 
             Toast.makeText(getActivity(),"STEPS CALL SUCCESSFUL!!",Toast.LENGTH_SHORT).show();
         }

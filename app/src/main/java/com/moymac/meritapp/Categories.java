@@ -9,7 +9,7 @@ public class Categories {
     public int ordinal;
     public String name;
     public String desc;
-    public int owner;
+    public String owner;
     public int views;
 
     public int getId() {
@@ -44,11 +44,11 @@ public class Categories {
         this.desc = desc;
     }
 
-    public int getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(int owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 

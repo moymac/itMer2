@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/steps_background"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/parent_step_layout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/projects_title"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textColor="@color/blue"
+            android:text="@string/projects"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/projects_title"
+            android:padding="5dp"
+            android:src="@drawable/avatar"
+            android:id="@+id/parent_step_icon"/>
+
+        <TextView
+            android:id="@+id/parent_step_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/projects_title"
+            android:layout_toEndOf="@+id/parent_step_icon"
+            android:padding="5dp"
+            android:text="Choose the right subject"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/parent_step_title"
+            android:layout_toRightOf="@id/parent_step_icon"
+            android:text="HARD"
+            android:padding="3dp"
+            android:layout_marginLeft="5dp"
+            style="@style/TitleBadgeDifficult"
+            android:background="@drawable/rounded_corner_hard"
+            android:id="@+id/parent_step_difficulty"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@id/parent_step_difficulty"
+            android:layout_below="@id/parent_step_title"
+            android:text="20 mins"
+            android:id="@+id/parent_step_time"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="5dp"
+            android:background="@drawable/rounded_corner_price_free"
+            android:text="FREE"
+            android:layout_margin="5dp"
+            android:id="@+id/parent_step_price"/>
+        <RatingBar
+            android:id="@+id/parent_step_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_below="@id/parent_step_price"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:visibility="visible"
+        android:background="@color/children_steps_background"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/parent_step_layout"
+        android:id="@+id/children_steps_layout">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/collapse_layout">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/arrow_up"
+                android:id="@+id/children_collapse_arrow"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/children_collapse_arrow"
+                android:text="@string/collapse"
+                android:id="@+id/children_collapse_text"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/collapse_layout"
+            android:text="3 STEPS TO CREATE A SUBJECT"
+            android:padding="5dp"
+            android:textColor="@color/blue"
+            android:id="@+id/numberof_children_steps" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="2px"
+            android:layout_margin="2dp"
+            android:paddingLeft="5dp"
+            android:src="@color/blue"
+            android:layout_below="@+id/numberof_children_steps"
+            android:layout_gravity="center_vertical" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_below="@+id/numberof_children_steps"
+            android:text="•Brainstorm ideas for a subject\n•Understand why you chose them\n•Communicate the core value"
+            android:id="@+id/the_children_steps"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/the_children_steps"
+            android:background="@drawable/rounded_corner_blue"
+            android:id="@+id/start_writing_children_layout"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_start_writing"
+                android:paddingRight="5dp"
+                android:textColor="@color/white"
+                android:text="@string/start_writing"/>
+            <ImageView
+                android:layout_width="2px"
+                android:layout_height="12dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/text_start_writing"
+                android:layout_gravity="center_vertical"
+                android:src="@color/white" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:text="$.99"
+                android:layout_toRightOf="@id/text_start_writing"
+                android:id="@+id/children_step_price"/>
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+</RelativeLayout>

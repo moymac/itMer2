@@ -29,5 +29,10 @@
     <color name="difficulty">#ffbf12</color>
 
     <color name="black_overlay">#66000000</color>
+    <color name="blue">#1276B3</color>
+    <color name="red">#DB185B</color>
+    <color name="price_free">#B3B3B3</color>
+    <color name="steps_background">#FFFFFF</color>
+    <color name="children_steps_background">#F9F9F9</color>
 
 </resources>

@@ -8,7 +8,7 @@ public class Projects {
     int template;
     String title;
     String desc;
-    int owner;
+    String owner;
 
     public int getTemplate() {
         return template;
@@ -34,11 +34,11 @@ public class Projects {
         this.desc = desc;
     }
 
-    public int getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(int owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 }
