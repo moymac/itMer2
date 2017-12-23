@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/steps_background"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
         android:id="@+id/parent_step_layout">
         <TextView
             android:layout_width="wrap_content"
@@ -16,8 +18,8 @@
             android:text="@string/projects"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/projects_title"
             android:padding="5dp"
@@ -65,23 +67,22 @@
         <RatingBar
             android:id="@+id/parent_step_ratingBar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_below="@id/parent_step_price"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/parent_step_title"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_marginTop="5dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:background="@color/children_steps_background"
         android:padding="10dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/parent_step_layout"
         android:id="@+id/children_steps_layout">
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/collapse_layout">
             <ImageView
@@ -91,7 +92,7 @@
                 android:layout_margin="5dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/arrow_up"
+                android:src="@android:drawable/arrow_up_float"
                 android:id="@+id/children_collapse_arrow"/>
             <TextView
                 android:layout_width="wrap_content"

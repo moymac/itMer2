@@ -1,6 +1,4 @@
-package com.moymac.meritapp;
-
-import android.view.View;
+package com.moymac.meritapp.Models;
 
 import java.util.ArrayList;
 
@@ -9,6 +7,7 @@ import java.util.ArrayList;
  */
 public class TemplateItem {
 
+    private int id;
     private String imageUrl;
     private String title;
     private String author;
@@ -18,12 +17,12 @@ public class TemplateItem {
     private float price;
     private String time;
 
-    private View.OnClickListener requestBtnClickListener;
 
     public TemplateItem() {
     }
 
-    public TemplateItem(String imageUrl, String title, String author, String description, String difficulty, float rating, float price, String time) {
+    public TemplateItem(int id, String imageUrl, String title, String author, String description, String difficulty, float rating, float price, String time) {
+        this.id = id;
         this.imageUrl = imageUrl;
         this.title = title;
         this.author = author;
@@ -34,6 +33,14 @@ public class TemplateItem {
         this.time = time;
 
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTime() {
@@ -100,14 +107,6 @@ public class TemplateItem {
         this.price = price;
     }
 
-    public View.OnClickListener getRequestBtnClickListener() {
-        return requestBtnClickListener;
-    }
-
-    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-        this.requestBtnClickListener = requestBtnClickListener;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -115,6 +114,7 @@ public class TemplateItem {
 
         TemplateItem that = (TemplateItem) o;
 
+        if (id != that.id) return false;
         if (Float.compare(that.rating, rating) != 0) return false;
         if (Float.compare(that.price, price) != 0) return false;
         if (imageUrl != null ? !imageUrl.equals(that.imageUrl) : that.imageUrl != null)
@@ -125,13 +125,13 @@ public class TemplateItem {
             return false;
         if (difficulty != null ? !difficulty.equals(that.difficulty) : that.difficulty != null)
             return false;
-        if (time != null ? !time.equals(that.time) : that.time != null) return false;
-        return requestBtnClickListener != null ? requestBtnClickListener.equals(that.requestBtnClickListener) : that.requestBtnClickListener == null;
+        return time != null ? time.equals(that.time) : that.time == null;
     }
 
     @Override
     public int hashCode() {
-        int result = imageUrl != null ? imageUrl.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (author != null ? author.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
@@ -139,7 +139,6 @@ public class TemplateItem {
         result = 31 * result + (rating != +0.0f ? Float.floatToIntBits(rating) : 0);
         result = 31 * result + (price != +0.0f ? Float.floatToIntBits(price) : 0);
         result = 31 * result + (time != null ? time.hashCode() : 0);
-        result = 31 * result + (requestBtnClickListener != null ? requestBtnClickListener.hashCode() : 0);
         return result;
     }
 
@@ -148,13 +147,13 @@ public class TemplateItem {
      */
     public static ArrayList<TemplateItem> getTestingList() {
         ArrayList<TemplateItem> items = new ArrayList<>();
-        items.add(new TemplateItem("https://image.flaticon.com/icons/png/128/181/181549.png","title", "author", "description","EASY",1,30, "20 mins"));
-        items.add(new TemplateItem("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/About_icon_%28The_Noun_Project%29.svg/200px-About_icon_%28The_Noun_Project%29.svg.png","title2", "author", "description","HARD",5,30, "15 mins"));
-        items.add(new TemplateItem("https://image.flaticon.com/icons/png/128/181/181549.png","title3", "author", "description","MODERATE",5,35, "25 mins"));
-        items.add(new TemplateItem("https://image.flaticon.com/icons/png/128/181/181549.png","title4", "author", "description","EASY",5,40, "10 mins"));
-        items.add(new TemplateItem("https://image.flaticon.com/icons/png/128/181/181549.png","title5", "author", "description","EASY",2,50, "30 mins"));
-        items.add(new TemplateItem("https://image.flaticon.com/icons/png/128/181/181549.png","title6", "author", "description","EASY",5,60, "60 mins"));
-        items.add(new TemplateItem("https://image.flaticon.com/icons/png/128/181/181549.png","title7", "author", "description","EASY",4,70, "90 mins"));
+        items.add(new TemplateItem(0,"https://image.flaticon.com/icons/png/128/181/181549.png","title", "author", "description","EASY",1,30, "20 mins"));
+        items.add(new TemplateItem(1, "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/About_icon_%28The_Noun_Project%29.svg/200px-About_icon_%28The_Noun_Project%29.svg.png","title2", "author", "description","HARD",5,30, "15 mins"));
+        items.add(new TemplateItem(2,"https://image.flaticon.com/icons/png/128/181/181549.png","title3", "author", "description","MODERATE",5,35, "25 mins"));
+        items.add(new TemplateItem(3,"https://image.flaticon.com/icons/png/128/181/181549.png","title4", "author", "description","EASY",5,40, "10 mins"));
+        items.add(new TemplateItem(4,"https://image.flaticon.com/icons/png/128/181/181549.png","title5", "author", "description","EASY",2,50, "30 mins"));
+        items.add(new TemplateItem(5,"https://image.flaticon.com/icons/png/128/181/181549.png","title6", "author", "description","EASY",5,60, "60 mins"));
+        items.add(new TemplateItem(6,"https://image.flaticon.com/icons/png/128/181/181549.png","title7", "author", "description","EASY",4,70, "90 mins"));
 
         return items;
 

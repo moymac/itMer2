@@ -34,5 +34,6 @@
     <color name="price_free">#B3B3B3</color>
     <color name="steps_background">#FFFFFF</color>
     <color name="children_steps_background">#F9F9F9</color>
+    <color name="input_background">#F25835</color>
 
 </resources>

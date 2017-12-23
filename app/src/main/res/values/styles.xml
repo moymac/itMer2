@@ -3,6 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -60,6 +63,5 @@
         <item name="android:textSize">14dp</item>
         <item name="android:background">@drawable/rounded_corner</item>
     </style>
-
 
 </resources>

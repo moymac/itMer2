@@ -1,8 +1,6 @@
-package com.moymac.meritapp;
+package com.moymac.meritapp.Models;
 
-import android.view.View;
-
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Simple POJO model for example
@@ -15,16 +13,18 @@ public class StepItem {
     private float rating;
     private double price;
     private String time;
-    private String numChildrenSteps;
-    private String childrenSteps;
+    private List<String> childrenStepsName;
+    private List<String> childrenStepsText;
+    private List<Integer> childrenStepsId;
+    private List<Integer> childrenStepsType;
     private double childrenPrice;
 
-    private View.OnClickListener requestBtnClickListener;
+
 
     public StepItem() {
     }
 
-    public StepItem(String imageUrl, String title, String difficulty, float rating, double price, String time, String numChildrenSteps, String childrenSteps, double childrenPrice) {
+    public StepItem(String imageUrl, String title, String difficulty, float rating, double price, String time, List<Integer> childrenStepsId, List<String> childrenStepsName, List<String> childrenStepsText, List<Integer> childrenStepsType, double childrenPrice) {
 
         this.imageUrl = imageUrl;
         this.title = title;
@@ -32,9 +32,12 @@ public class StepItem {
         this.rating = rating;
         this.price = price;
         this.time = time;
-        this.numChildrenSteps = numChildrenSteps;
-        this.childrenSteps = childrenSteps;
+        this.childrenStepsId = childrenStepsId;
+        this.childrenStepsName = childrenStepsName;
+        this.childrenStepsText = childrenStepsText;
+        this.childrenStepsType = childrenStepsType;
         this.childrenPrice = childrenPrice;
+
 
 
 
@@ -88,22 +91,6 @@ public class StepItem {
         this.time = time;
     }
 
-    public String getNumChildrenSteps() {
-        return numChildrenSteps;
-    }
-
-    public void setNumChildrenSteps(String numChildrenSteps) {
-        this.numChildrenSteps = numChildrenSteps;
-    }
-
-    public String getChildrenSteps() {
-        return childrenSteps;
-    }
-
-    public void setChildrenSteps(String childrenSteps) {
-        this.childrenSteps = childrenSteps;
-    }
-
     public double getChildrenPrice() {
         return childrenPrice;
     }
@@ -112,12 +99,36 @@ public class StepItem {
         this.childrenPrice = childrenPrice;
     }
 
-    public View.OnClickListener getRequestBtnClickListener() {
-        return requestBtnClickListener;
+    public List<String> getChildrenStepsName() {
+        return childrenStepsName;
     }
 
-    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-        this.requestBtnClickListener = requestBtnClickListener;
+    public void setChildrenStepsName(List<String> childrenStepsName) {
+        this.childrenStepsName = childrenStepsName;
+    }
+
+    public List<String> getChildrenStepsText() {
+        return childrenStepsText;
+    }
+
+    public void setChildrenStepsText(List<String> childrenStepsText) {
+        this.childrenStepsText = childrenStepsText;
+    }
+
+    public List<Integer> getChildrenStepsId() {
+        return childrenStepsId;
+    }
+
+    public void setChildrenStepsId(List<Integer> childrenStepsId) {
+        this.childrenStepsId = childrenStepsId;
+    }
+
+    public List<Integer> getChildrenStepsType() {
+        return childrenStepsType;
+    }
+
+    public void setChildrenStepsType(List<Integer> childrenStepsType) {
+        this.childrenStepsType = childrenStepsType;
     }
 
     @Override
@@ -136,11 +147,13 @@ public class StepItem {
         if (difficulty != null ? !difficulty.equals(stepItem.difficulty) : stepItem.difficulty != null)
             return false;
         if (time != null ? !time.equals(stepItem.time) : stepItem.time != null) return false;
-        if (numChildrenSteps != null ? !numChildrenSteps.equals(stepItem.numChildrenSteps) : stepItem.numChildrenSteps != null)
+        if (childrenStepsName != null ? !childrenStepsName.equals(stepItem.childrenStepsName) : stepItem.childrenStepsName != null)
             return false;
-        if (childrenSteps != null ? !childrenSteps.equals(stepItem.childrenSteps) : stepItem.childrenSteps != null)
+        if (childrenStepsText != null ? !childrenStepsText.equals(stepItem.childrenStepsText) : stepItem.childrenStepsText != null)
             return false;
-        return requestBtnClickListener != null ? requestBtnClickListener.equals(stepItem.requestBtnClickListener) : stepItem.requestBtnClickListener == null;
+        if (childrenStepsId != null ? !childrenStepsId.equals(stepItem.childrenStepsId) : stepItem.childrenStepsId != null)
+            return false;
+        return childrenStepsType != null ? childrenStepsType.equals(stepItem.childrenStepsType) : stepItem.childrenStepsType == null;
     }
 
     @Override
@@ -154,13 +167,15 @@ public class StepItem {
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (time != null ? time.hashCode() : 0);
-        result = 31 * result + (numChildrenSteps != null ? numChildrenSteps.hashCode() : 0);
-        result = 31 * result + (childrenSteps != null ? childrenSteps.hashCode() : 0);
+        result = 31 * result + (childrenStepsName != null ? childrenStepsName.hashCode() : 0);
+        result = 31 * result + (childrenStepsText != null ? childrenStepsText.hashCode() : 0);
+        result = 31 * result + (childrenStepsId != null ? childrenStepsId.hashCode() : 0);
+        result = 31 * result + (childrenStepsType != null ? childrenStepsType.hashCode() : 0);
         temp = Double.doubleToLongBits(childrenPrice);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (requestBtnClickListener != null ? requestBtnClickListener.hashCode() : 0);
         return result;
     }
+
 
     /**
      * @return List of elements prepared for tests

@@ -1,4 +1,4 @@
-package com.moymac.meritapp;
+package com.moymac.meritapp.Models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -12,6 +12,25 @@ public class Inputs {
 
     @SerializedName("text")
     String text;
+
+    public int id;
+    public int timesIterated;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTimesIterated() {
+        return timesIterated;
+    }
+
+    public void setTimesIterated(int timesIterated) {
+        this.timesIterated = timesIterated;
+    }
 
     public int getStep() {
         return step;

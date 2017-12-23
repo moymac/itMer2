@@ -1,4 +1,4 @@
-package com.moymac.meritapp;
+package com.moymac.meritapp.Models;
 
 /**
  * Created by moymac on 11/13/17.

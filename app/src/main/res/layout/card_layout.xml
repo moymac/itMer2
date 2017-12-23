@@ -2,123 +2,136 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bgContent"
     android:baselineAligned="false"
+    app:cardUseCompatPadding="true"
+    card_view:cardElevation="0.03dp"
+    android:descendantFocusability="blocksDescendants"
+    android:animateLayoutChanges="true"
     android:id="@+id/template_card_view"
     android:orientation="vertical">
-
-    <!-- RIGHT TITLE PART -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/bgTitleRight"
-        android:id="@+id/template_card_layout"
-        android:paddingBottom="20dp"
-        android:paddingEnd="20dp"
-        android:paddingStart="15dp"
-        android:paddingTop="20dp">
-
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/avatar" />
-
-        <TextView
-            android:id="@+id/titleTV"
-            android:layout_width="wrap_content"
+        android:animateLayoutChanges="true"
+        android:id="@+id/main_template_layout"
+        android:layout_height="wrap_content">
+        <!-- RIGHT TITLE PART -->
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/icon"
-            android:layout_marginTop="-5dp"
-            android:layout_toEndOf="@+id/icon"
-            android:ellipsize="marquee"
-            android:fadingEdge="horizontal"
-            android:singleLine="true"
-            android:text="Title"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:background="@color/bgTitleRight"
+            android:id="@+id/template_card_layout"
+            android:paddingBottom="20dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="15dp"
+            android:paddingTop="20dp">
 
-        <TextView
-            android:id="@+id/authorTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titleTV"
-            android:layout_toEndOf="@+id/icon"
-            android:textSize="18sp"
-            android:textColor="@android:color/holo_blue_dark"
-            android:text="author" />
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/avatar" />
 
-        <TextView
-            android:id="@+id/descriptionTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/icon"
-            android:textSize="16dp"
-            android:text="Description" />
+            <TextView
+                android:id="@+id/titleTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/icon"
+                android:layout_marginTop="-5dp"
+                android:layout_toEndOf="@+id/icon"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="Title"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/priceTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/authorTV"
-            android:textSize="18dp"
-            android:text="$24" />
+            <TextView
+                android:id="@+id/authorTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleTV"
+                android:layout_toEndOf="@+id/icon"
+                android:textSize="18sp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:text="author" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"/>
+            <TextView
+                android:id="@+id/descriptionTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/icon"
+                android:textSize="16dp"
+                android:text="Description" />
 
-        <TextView
-            android:id="@+id/difficultyTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/descriptionTV"
-            style="@style/TitleBadgeDifficult"
-            android:text="easy" />
+            <TextView
+                android:id="@+id/priceTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/authorTV"
+                android:textSize="18dp"
+                android:text="$24" />
 
-        <TextView
-            android:id="@+id/timeTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/descriptionTV"
-            android:layout_toEndOf="@+id/difficultyTV"
-            android:padding="5dp"
-            android:text="20 mins" />
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_below="@+id/descriptionTV"
+                android:layout_alignParentRight="true"/>
 
+            <TextView
+                android:id="@+id/difficultyTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/descriptionTV"
+                style="@style/TitleBadgeDifficult"
+                android:text="easy" />
+
+            <TextView
+                android:id="@+id/timeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descriptionTV"
+                android:layout_toEndOf="@+id/difficultyTV"
+                android:padding="5dp"
+                android:text="20 mins" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/steps_list_view"
+            android:scrollbars="none"
+            android:visibility="gone"
+            android:clipChildren="false"
+            android:dividerHeight="1px"
+            android:layout_below="@id/template_card_layout"
+            android:divider="@android:color/darker_gray"
+            android:layout_height="wrap_content"/>
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/steps_hidden_layout"-->
+            <!--android:background="@color/bgContentTop"-->
+            <!--android:paddingBottom="20dp"-->
+            <!--android:paddingEnd="20dp"-->
+            <!--android:paddingStart="15dp"-->
+            <!--android:visibility="gone"-->
+            <!--android:paddingTop="20dp">-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Steps"/>-->
+        <!--</RelativeLayout>-->
     </RelativeLayout>
-
-    <include
-        layout="@layout/steps_layout"
-        android:id="@+id/steps_hidden_layout"
-        android:visibility="visible"
-
-        />
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1"-->
-        <!--android:id="@+id/steps_hidden_layout"-->
-        <!--android:background="@color/bgContentTop"-->
-        <!--android:paddingBottom="20dp"-->
-        <!--android:paddingEnd="20dp"-->
-        <!--android:paddingStart="15dp"-->
-        <!--android:visibility="gone"-->
-        <!--android:paddingTop="20dp">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Steps"/>-->
-    <!--</RelativeLayout>-->
-
 </android.support.v7.widget.CardView>

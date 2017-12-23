@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.moymac.meritapp.Models.Categories;
 
 import java.util.List;
 
@@ -25,7 +25,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
-    private TextView testTV;
     private ApiInterface apiInterface;
     private FragmentTabHost mTabHost;
     ProgressBar progressBar;
@@ -34,6 +33,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideSystemUI();
         setContentView(R.layout.activity_main);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
@@ -43,6 +43,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         apiInterface.getCategories().enqueue(categoriesCallback);
 
 
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("WORKAROUND_FOR_BUG_19917_KEY", "WORKAROUND_FOR_BUG_19917_VALUE");
+        super.onSaveInstanceState(outState);
     }
 
 
@@ -120,5 +125,19 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         TextView tv = (TextView) view.findViewById(R.id.textView);
         tv.setText(title);
         return view;
+    }
+
+    private void hideSystemUI() {
+        // Set the IMMERSIVE flag.
+        // Set the content to appear under the system bars so that the content
+        // doesn't resize when the system bars hide and show.
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
 }

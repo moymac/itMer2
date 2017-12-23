@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/tool_bar"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llFooter"
+        android:paddingBottom="60dp"
+        android:clipToPadding="false">
+
+        <RelativeLayout
+            android:id="@+id/rlContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/composition_main_RV"
+                android:visibility="visible"/>
+
+            <!--<EditText-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:visibility="gone"-->
+                <!--android:id="@+id/composing_editText"/>-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:visibility="gone"-->
+                <!--android:layout_below="@id/composing_editText"-->
+                <!--android:id="@+id/composing_imageview"/>-->
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llFooter"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/steps_background"
+        android:layout_above="@+id/layout_chatbox">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/composition_steps_rv"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_chatbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:minHeight="48dp"
+        android:weightSum="14"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/composing_camera"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:tint="@color/white"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_menu_camera"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/composing_gallery"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:tint="@color/white"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_menu_gallery"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/composing_audio"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:tint="@color/white"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_btn_speak_now"/>
+
+        <Button
+            android:id="@+id/button_chatbox_send"
+            android:text="SEND"
+            android:textSize="14dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_weight="1"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</RelativeLayout>
+

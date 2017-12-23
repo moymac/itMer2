@@ -1,5 +1,11 @@
 package com.moymac.meritapp;
 
+import com.moymac.meritapp.Models.Categories;
+import com.moymac.meritapp.Models.Inputs;
+import com.moymac.meritapp.Models.Projects;
+import com.moymac.meritapp.Models.Steps;
+import com.moymac.meritapp.Models.Templates;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,13 +38,13 @@ public interface ApiInterface {
     @GET("projects")
     Call<List<Projects>> getProjects();
 
-    @GET("/inputs/?format=json")
-    Call<Inputs> getInputs();
+    @GET("inputs/")
+    Call<List<Inputs>> getInputs(@Query("userID") int user_id);
 
 
     @FormUrlEncoded
-    @POST("inputs")
-    Call<Inputs> postInputs(@Field("step") int stepNum, @Field("text") String textData);
+    @POST("inputs/")
+    Call<Inputs> postInputs(@Field("step") String stepNum, @Field("text") String textData);
 
 
 }

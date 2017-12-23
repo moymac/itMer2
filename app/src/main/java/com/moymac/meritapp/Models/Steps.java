@@ -1,10 +1,13 @@
-package com.moymac.meritapp;
+package com.moymac.meritapp.Models;
+
+import java.util.List;
 
 /**
  * Created by moymac on 11/13/17.
  */
 
 public class Steps {
+
     int id;
     int parent;
     String name;
@@ -12,13 +15,25 @@ public class Steps {
     int ordinal;
     String text;
     String owner;
+    int dataType;
 
+    public Steps(int id,String name,String text, int dataType) {
+        this.id = id;
+        this.name = name;
+        this.text = text;
+        this.dataType = dataType;
+
+    }
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getParent() {
+        return parent;
     }
 
     public void setParent(int parent) {
@@ -64,4 +79,12 @@ public class Steps {
     public void setText(String text) {
         this.text = text;
     }
+
+    public int getDataType() {
+        return dataType;
+    }
+    public void setDataType(int dataType){
+        this.dataType = dataType;
+    }
 }
+
