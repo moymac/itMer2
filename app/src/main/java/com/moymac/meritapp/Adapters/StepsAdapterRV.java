@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moymac.meritapp.Composing;
+import com.moymac.meritapp.ComposingFixed;
 import com.moymac.meritapp.R;
 import com.moymac.meritapp.Models.StepItem;
 import com.squareup.picasso.Picasso;
@@ -111,7 +112,7 @@ public class StepsAdapterRV extends RecyclerView.Adapter<StepsAdapterRV.ViewHold
         holder.startWritingLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(mContext, Composing.class);
+                Intent myIntent = new Intent(mContext, ComposingFixed.class);
                 myIntent.putExtra("parentTitle", stepItem.getTitle());
                 myIntent.putIntegerArrayListExtra("childIds", (ArrayList<Integer>) stepItem.getChildrenStepsId());
                 myIntent.putStringArrayListExtra("childNames", (ArrayList<String>) stepItem.getChildrenStepsName());

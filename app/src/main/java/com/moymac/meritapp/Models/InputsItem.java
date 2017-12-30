@@ -9,13 +9,22 @@ import java.util.Date;
 public class InputsItem {
     int step;
   //  Date creationTime;
-
+    int content_type;
     Object content;
 
-    public InputsItem(int step,Object content){
+    public InputsItem(int step,int content_type, Object content){
         this.step = step;
       //  this.creationTime = creationTime;
         this.content = content;
+        this.content_type = content_type;
+    }
+
+    public int getContent_type() {
+        return content_type;
+    }
+
+    public void setContent_type(int content_type) {
+        this.content_type = content_type;
     }
 
     public int getStep() {

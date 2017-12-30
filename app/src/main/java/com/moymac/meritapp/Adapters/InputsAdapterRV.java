@@ -45,7 +45,6 @@ public class InputsAdapterRV extends RecyclerView.Adapter<InputsAdapterRV.ViewHo
     private List<InputsItem> inputsList;
     CustomItemClickListener listener;
     //private String[] mDataset;
-    private Object[] theInputObjectList;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -69,11 +68,10 @@ public class InputsAdapterRV extends RecyclerView.Adapter<InputsAdapterRV.ViewHo
 
 
     }
-    public InputsAdapterRV(Context mContext, List<InputsItem> inputsList,Object[] theInputObjectList, CustomItemClickListener listener){
+    public InputsAdapterRV(Context mContext, List<InputsItem> inputsList, CustomItemClickListener listener){
         this.mContext = mContext;
         this.inputsList = inputsList;
         this.listener = listener;
-        this.theInputObjectList = theInputObjectList;
     }
     @Override
     public InputsAdapterRV.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -102,7 +100,7 @@ public class InputsAdapterRV extends RecyclerView.Adapter<InputsAdapterRV.ViewHo
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    Log.e("touch", "en EditText");
+                    //Log.e("touch", "en EditText");
                     listener.onItemClick(v, holder.getAdapterPosition());
                 }
                 return false;

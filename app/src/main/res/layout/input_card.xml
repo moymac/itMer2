@@ -14,6 +14,7 @@
         android:layout_below="@id/input_content_video"
         android:layout_margin="5dp"
         android:visibility="visible"
+        android:hint="@string/text_hint"
         android:textColor="@drawable/edittext_modified_states"
         android:background="@color/white"
          />
@@ -26,7 +27,7 @@
         android:padding="8dp"
         android:layout_margin="5dp"
         android:visibility="gone"
-        app:srcCompat="@drawable/avatar" />
+        android:src="@drawable/drop_area" />
 
     <VideoView
         android:id="@+id/input_content_video"

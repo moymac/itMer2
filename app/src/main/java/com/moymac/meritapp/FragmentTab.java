@@ -149,13 +149,13 @@ public class FragmentTab extends Fragment implements SwipeRefreshLayout.OnRefres
             final List<Templates> responseList = response.body();
             for (Templates template : responseList){
 
-                Log.e("Id", String.valueOf(template.getId()));
-                Log.e("Category", String.valueOf(template.getCategory()));
-                Log.e("Ordinal", String.valueOf(template.getOrdinal()));
-                Log.e("Name", template.getName());
-                Log.e("Description", template.getDescription());
-                Log.e("Owner", template.getOwner());
-                Log.e("Views", String.valueOf(template.getViews()));
+                //Log.e("Id", String.valueOf(template.getId()));
+                //Log.e("Category", String.valueOf(template.getCategory()));
+                //Log.e("Ordinal", String.valueOf(template.getOrdinal()));
+                //Log.e("Name", template.getName());
+                //Log.e("Description", template.getDescription());
+                //Log.e("Owner", template.getOwner());
+                //Log.e("Views", String.valueOf(template.getViews()));
 
                 templateList.add(new TemplateItem(template.getId(),"https://image.flaticon.com/icons/png/128/181/181549.png",template.getName(), "author", template.getDescription(),"EASY",1,30, "20 mins"));
 

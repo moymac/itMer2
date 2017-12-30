@@ -1,18 +1,12 @@
 package com.moymac.meritapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.media.Image;
-import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
@@ -21,7 +15,6 @@ import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -29,26 +22,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.moymac.meritapp.Adapters.InputsAdapterRV;
+import com.moymac.meritapp.Adapters.InputsAdapterRVFixed;
 import com.moymac.meritapp.Adapters.ProjectStepAdapter;
 import com.moymac.meritapp.Models.Inputs;
 import com.moymac.meritapp.Models.InputsItem;
 import com.moymac.meritapp.Models.Steps;
-import com.moymac.meritapp.Models.TemplateItem;
-import com.moymac.meritapp.Models.Templates;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +44,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Composing extends AppCompatActivity  implements View.OnClickListener{
+public class ComposingFixed extends AppCompatActivity  implements View.OnClickListener{
     String projectTitle;
     List<Integer> projectChildIds = new ArrayList<>();
     List<String> projectChildNames = new ArrayList<>();
@@ -66,8 +54,7 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
   //  Object[] theInputObjectList;
     private ApiInterface apiInterface;
 
-    int currentStepPosition;
-    int currentInputPosition = 0;
+    int currentStepPosition = 0;
 
     RecyclerView compositionStepsRV;
     ProjectStepAdapter projectStepAdapter;
@@ -86,7 +73,7 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
     Button sendButton;
 
     RecyclerView compositionInputsRV;
-    InputsAdapterRV inputsAdapter;
+    InputsAdapterRVFixed inputsAdapter;
     List<InputsItem> projectInputsList;
 
 
@@ -136,10 +123,10 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
             projectChildTypes = (List<Integer>) savedInstanceState.getSerializable("childTypes");
 
         }
-   //     theInputObjectList = new Object[projectChildIds.size()];
+     //   theInputObjectList = new Object[projectChildIds.size()];
    //     for(int i=0;i<projectChildIds.size();i++){
-    //        theInputObjectList[i]="";
-     //   }
+ //           theInputObjectList[i]="";
+ //       }
 
         toolbarTV.setText(projectTitle);
 
@@ -148,29 +135,27 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
 
 
         projectInputsList = new ArrayList<>();
+        projectStepsList = new ArrayList<>();
+        for (int i =0;i<projectChildIds.size();i++) {
+            projectStepsList.add(new Steps(projectChildIds.get(i),projectChildNames.get(i),projectChildTexts.get(i),projectChildTypes.get(i)));
+            projectInputsList.add(new InputsItem(projectChildIds.get(i),projectChildTypes.get(i),null));
+        }
+
+
         ///make the call for inputs and if empty, create FIRST INPUT
-        projectInputsList.add(new InputsItem(projectChildIds.get(0),1,""));
+       // projectInputsList.add(new InputsItem(projectChildIds.get(0),""));
         compositionInputsRV = findViewById(R.id.composition_main_RV);
 
         ///String[] theDataset = new String[20];
         //theDataset[0] = "somethin";
-        inputsAdapter = new InputsAdapterRV(this, projectInputsList, new CustomItemClickListener() {
+        inputsAdapter = new InputsAdapterRVFixed(this, projectInputsList, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-               // Log.e("HuboClick", v.toString() + String.valueOf(position));
+         //       Log.e("HuboClick", v.toString() + String.valueOf(position));
 
-                currentInputPosition = position;
                 currentStepPosition = position;
                 compositionStepsRV.smoothScrollToPosition(currentStepPosition);
-                compositionInputsRV.smoothScrollToPosition(currentInputPosition);
-
-
-//                EditText theEditText = v.findViewById(R.id.input_content_et);
-//                ImageView theImageView = v.findViewById(R.id.input_content_iv);
-//                VideoView theVideoView = v.findViewById(R.id.input_content_video);
-//                if(theEditText.getVisibility()==View.VISIBLE) inputCurrentlyWorkingView = theEditText;
-//                if(theImageView.getVisibility()==View.VISIBLE) inputCurrentlyWorkingView = theImageView;
-//                if(theVideoView.getVisibility()==View.VISIBLE) inputCurrentlyWorkingView = theVideoView;
+                compositionInputsRV.smoothScrollToPosition(currentStepPosition);
 
             }
         });
@@ -180,16 +165,13 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
         compositionInputsRV.setAdapter(inputsAdapter);
 
 
-        projectStepsList = new ArrayList<>();
+
         compositionStepsRV = findViewById(R.id.composition_steps_rv);
-        for (int i =0;i<projectChildIds.size();i++) {
-            projectStepsList.add(new Steps(projectChildIds.get(i),projectChildNames.get(i),projectChildTexts.get(i),projectChildTypes.get(i)));
-        }
+
         projectStepAdapter = new ProjectStepAdapter(this, projectStepsList, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 currentStepPosition = position;
-                currentInputPosition = position;
                 compositionInputsRV.getChildAt(position).requestFocus();
                 //composingText.setHint(projectChildTexts.get(position));
             }
@@ -199,8 +181,19 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
         compositionStepsRV.setLayoutManager(mLayoutManager);
         compositionStepsRV.setItemAnimator(new DefaultItemAnimator());
         compositionStepsRV.setAdapter(projectStepAdapter);
-        SnapHelper snapHelper = new LinearSnapHelper();
+        SnapHelper snapHelper = new LinearSnapHelper(){
+            @Override
+            public int findTargetSnapPosition(RecyclerView.LayoutManager layoutManager, int velocityX, int velocityY) {
+                int snapPosition = super.findTargetSnapPosition(layoutManager, velocityX, velocityY);
+                // Do somethin g with snapPosition
+//                Log.e("snap position",String.valueOf(snapPosition));
+                if (snapPosition!= -1) compositionInputsRV.getChildAt(snapPosition).requestFocus();
+
+                return snapPosition;
+            }
+        };
         snapHelper.attachToRecyclerView(compositionStepsRV);
+
 
     }
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -237,7 +230,30 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+        RelativeLayout tempRelativeLayout;
+
+        for(int i =0;i<projectInputsList.size();i++){
+            tempRelativeLayout = (RelativeLayout) compositionInputsRV.getChildAt(i);
+            View inputCurrentlyWorkingView = tempRelativeLayout.findViewById(R.id.input_content_et);
+            if (inputCurrentlyWorkingView.hasFocus()){
+                currentStepPosition = i;
+            }
+
+        }
+        tempRelativeLayout = (RelativeLayout) compositionInputsRV.getChildAt(currentStepPosition);
+        View inputCurrentlyWorkingView = tempRelativeLayout.findViewById(R.id.input_content_et);
+
+        EditText currentlyWorkingET = (EditText) inputCurrentlyWorkingView;
+        String inputString = currentlyWorkingET.getText().toString();
+
         switch (v.getId()){
+            case R.id.composing_text_formatting:
+                int startSelection=currentlyWorkingET.getSelectionStart();
+                int endSelection=currentlyWorkingET.getSelectionEnd();
+
+                String selectedText = currentlyWorkingET.getText().toString().substring(startSelection, endSelection);
+
+                break;
             case R.id.composing_camera:
                 dispatchTakePictureIntent();
                 break;
@@ -247,49 +263,17 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
                 break;
             case R.id.button_chatbox_send:
 
-                RelativeLayout tempRelativeLayout;
-
-                for(int i =0;i<projectInputsList.size();i++){
-                    tempRelativeLayout = (RelativeLayout) compositionInputsRV.getChildAt(i);
-                    View inputCurrentlyWorkingView = tempRelativeLayout.findViewById(R.id.input_content_et);
-                    if (inputCurrentlyWorkingView.hasFocus()){
-                        currentInputPosition = i;
-                    }
+                projectInputsList.get(currentStepPosition).setContent(inputString);
+                for (int i=0; i<projectStepsList.size();i++){
+                    apiInterface.postInputs(String.valueOf(projectStepsList.get(i).getId()),(String) projectInputsList.get(i).getContent()).enqueue(inputsCallback);
 
                 }
-                tempRelativeLayout = (RelativeLayout) compositionInputsRV.getChildAt(currentInputPosition);
-                View inputCurrentlyWorkingView = tempRelativeLayout.findViewById(R.id.input_content_et);
 
-                EditText currentlyWorkingET = (EditText) inputCurrentlyWorkingView;
-                String inputString = currentlyWorkingET.getText().toString();
-      //          theInputObjectList[currentInputPosition] = inputString;
-               // Log.e("LO dEL EDITTEXT", String.valueOf(inputString));
-                projectInputsList.get(currentInputPosition).setContent(inputString);
-                apiInterface.postInputs(String.valueOf(projectStepsList.get(currentInputPosition).getId()),inputString).enqueue(inputsCallback);
-                if (currentStepPosition < projectStepsList.size()-1 && projectInputsList.size() < projectStepsList.size()) {
-                    Steps clickedStep = projectStepsList.get(currentStepPosition);
-
-                    int dataType = clickedStep.getDataType();
-                    switch (dataType) {
-                        case 0:
-                            projectInputsList.add(new InputsItem(clickedStep.getId(),1, ""));
-
-                            break;
-                        case 1:
-                            projectInputsList.add(new InputsItem(clickedStep.getId(), 2,"this is supposed to be an image"));
-                    }
-                }else {
-                    Toast.makeText(this,"You have finished the project!",Toast.LENGTH_LONG);
-                }
-              //  projectInputsList.add(new InputsItem(inputCurrentlyWorkingView.getId(),thisDate,composingText.getText().toString()));
                 if (currentStepPosition<projectStepsList.size()-1){
-                  //  currentStepPosition++;
-                    currentInputPosition++;
+                    currentStepPosition++;
                 }
-                compositionStepsRV.smoothScrollToPosition(currentInputPosition);
-                inputsAdapter.notifyDataSetChanged();
-           //     Log.e("projectListSize",String.valueOf(projectInputsList.size()));
-         //       compositionInputsRV.getChildAt(projectInputsList.size()-1).requestFocus();
+                compositionStepsRV.smoothScrollToPosition(currentStepPosition);
+                compositionInputsRV.getChildAt(currentStepPosition).requestFocus();
 
                 break;
             case R.id.toolbar_button:
@@ -317,13 +301,13 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
         public void onResponse(@NonNull Call<Inputs> call, @NonNull final Response<Inputs> response) {
             final Inputs input = response.body();
             if (input != null) {
-                //Log.e("Id", String.valueOf(input.getId()));
-                //Log.e("Step", String.valueOf(input.getStep()));
-                //Log.e("Text", String.valueOf(input.getText()));
-                //Log.e("TimesIterated", String.valueOf(input.getTimesIterated()));
+             //   Log.e("Id", String.valueOf(input.getId()));
+             //   Log.e("Step", String.valueOf(input.getStep()));
+             //   Log.e("Text", String.valueOf(input.getText()));
+             //   Log.e("TimesIterated", String.valueOf(input.getTimesIterated()));
 
             } else{
-                Toast.makeText(Composing.this,response.message(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ComposingFixed.this,response.message(),Toast.LENGTH_SHORT).show();
 
             }
 
@@ -335,7 +319,7 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
 
         @Override
         public void onFailure(@NonNull Call<Inputs> call, @NonNull Throwable t) {
-            Toast.makeText(Composing.this,"INPUTS POST FAILED",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ComposingFixed.this,"INPUTS POST FAILED",Toast.LENGTH_SHORT).show();
 
         }
 
