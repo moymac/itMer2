@@ -16,7 +16,7 @@ public class InputEntity {
     private int id;
 
     @ColumnInfo(name = "content")
-    private Object content;
+    private String content;
 
     @ColumnInfo(name = "type")
     private int type;
@@ -38,11 +38,11 @@ public class InputEntity {
         this.id = id;
     }
 
-    public Object getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(Object content) {
+    public void setContent(String content) {
         this.content = content;
     }
 

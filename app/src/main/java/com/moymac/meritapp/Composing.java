@@ -100,15 +100,15 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
         toolbarButton = findViewById(R.id.toolbar_button);
         toolbarButton.setOnClickListener(this);
         toolbarTV = findViewById(R.id.toolbar_text);
-
-        photoButton = findViewById(R.id.composing_camera);
-        photoButton.setOnClickListener(this);
-        galleryButton = findViewById(R.id.composing_gallery);
-        galleryButton.setOnClickListener(this);
-        recordButton = findViewById(R.id.composing_audio);
-        recordButton.setOnClickListener(this);
-        sendButton = findViewById(R.id.button_chatbox_send);
-        sendButton.setOnClickListener(this);
+//
+//        photoButton = findViewById(R.id.composing_camera);
+//        photoButton.setOnClickListener(this);
+//        galleryButton = findViewById(R.id.composing_gallery);
+//        galleryButton.setOnClickListener(this);
+//        recordButton = findViewById(R.id.composing_audio);
+//        recordButton.setOnClickListener(this);
+//        sendButton = findViewById(R.id.button_chatbox_send);
+//        sendButton.setOnClickListener(this);
 
    //     composingImageview = findViewById(R.id.composing_imageview);
     //    composingText = findViewById(R.id.composing_editText);
@@ -237,14 +237,14 @@ public class Composing extends AppCompatActivity  implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.composing_camera:
-                dispatchTakePictureIntent();
-                break;
-            case R.id.composing_audio:
-                break;
-            case R.id.composing_gallery:
-                break;
+       switch (v.getId()){
+//            case R.id.composing_camera:
+//                dispatchTakePictureIntent();
+//                break;
+//            case R.id.composing_audio:
+//                break;
+//            case R.id.composing_gallery:
+//                break;
             case R.id.button_chatbox_send:
 
                 RelativeLayout tempRelativeLayout;

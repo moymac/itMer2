@@ -92,7 +92,7 @@ public class InputsAdapterRV extends RecyclerView.Adapter<InputsAdapterRV.ViewHo
     public void onBindViewHolder(final InputsAdapterRV.ViewHolder holder, int position) {
         InputsItem inputsItem = inputsList.get(position);
         int step = inputsItem.getStep();
-        Object content = inputsItem.getContent();
+        String content = inputsItem.getContent();
        // Date creationTime = inputsItem.getCreationTime();
        // holder.timeTV.setText(creationTime.toString());
       //  holder.editText.setText(mDataset[holder.getAdapterPosition()]);
@@ -106,37 +106,7 @@ public class InputsAdapterRV extends RecyclerView.Adapter<InputsAdapterRV.ViewHo
                 return false;
             }
         });
-        if (content instanceof String){
-            holder.editText.setVisibility(View.VISIBLE);
-            holder.editText.setText(content.toString());
-            holder.imageView.setVisibility(View.GONE);
-            holder.videoView.setVisibility(View.GONE);
-            if(holder.getAdapterPosition()==inputsList.size()-1)holder.editText.requestFocus();
 
-            // update MyCustomEditTextListener every time we bind a new item
-            // so that it knows what item in mDataset to update
-            //holder.myCustomEditTextListener.updatePosition(holder.getAdapterPosition());
-          //  String temp = theInputObjectList[previousInput].toString();
-           // holder.editText.setText(temp);
-
-
-        }else if (content instanceof File) {
-            holder.editText.setVisibility(View.GONE);
-            holder.imageView.setVisibility(View.VISIBLE);
-            holder.videoView.setVisibility(View.GONE);
-
-            File f = (File) content;
-
-            String mimeType = URLConnection.guessContentTypeFromName(f.getAbsolutePath());
-            if (mimeType != null && mimeType.startsWith("image")) {
-                Bitmap myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
-                holder.imageView.setImageBitmap(myBitmap);
-            }
-            if (mimeType != null && mimeType.startsWith("video")) {
-                holder.videoView.setVideoPath(f.getAbsolutePath());
-            }
-
-        }
 
     }
 

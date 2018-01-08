@@ -10,6 +10,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,14 +29,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile files('libs/ksoap2-android-assembly-3.0.0-jar-with-dependencies.jar')
-    compile 'com.airbnb.android:lottie:2.2.5'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.etiya.etiyabadgetablib:etiyabadgetablib:0.0.3'
     compile 'com.android.support:cardview-v7:26.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion
+    annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
+    compile 'jp.wasabeef:richeditor-android:1.2.2'
+    compile 'com.github.QuadFlask:colorpicker:0.0.13'
 
-    compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
-    annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion;
 
 }

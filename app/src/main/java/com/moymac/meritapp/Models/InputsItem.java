@@ -10,9 +10,9 @@ public class InputsItem {
     int step;
   //  Date creationTime;
     int content_type;
-    Object content;
+    String content;
 
-    public InputsItem(int step,int content_type, Object content){
+    public InputsItem(int step,int content_type, String content){
         this.step = step;
       //  this.creationTime = creationTime;
         this.content = content;
@@ -35,11 +35,11 @@ public class InputsItem {
         this.step = step;
     }
 
-    public Object getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(Object content) {
+    public void setContent(String content) {
         this.content = content;
     }
 }

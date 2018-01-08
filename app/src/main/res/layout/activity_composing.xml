@@ -23,22 +23,11 @@
 
 
             <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/composition_main_RV"
                 android:visibility="visible"/>
 
-            <!--<EditText-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:visibility="gone"-->
-                <!--android:id="@+id/composing_editText"/>-->
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:visibility="gone"-->
-                <!--android:layout_below="@id/composing_editText"-->
-                <!--android:id="@+id/composing_imageview"/>-->
         </RelativeLayout>
 
     </ScrollView>
@@ -70,48 +59,16 @@
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:background="@color/blue">
+        <HorizontalScrollView android:id="@+id/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:layout_weight="11"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="none">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/composing_text_formatting"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@color/white"
-            android:background="?attr/selectableItemBackground"
-            android:src="@android:drawable/ic_menu_edit"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/composing_camera"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@color/white"
-            android:background="?attr/selectableItemBackground"
-            android:src="@android:drawable/ic_menu_camera"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/composing_gallery"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@color/white"
-            android:background="?attr/selectableItemBackground"
-            android:src="@android:drawable/ic_menu_gallery"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/composing_audio"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@color/white"
-            android:background="?attr/selectableItemBackground"
-            android:src="@android:drawable/ic_btn_speak_now"/>
-
+            <include layout="@layout/edition_toolbar" />
+        </HorizontalScrollView>
         <Button
             android:id="@+id/button_chatbox_send"
             android:text="SEND"
@@ -119,7 +76,7 @@
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:layout_width="64dp"
             android:layout_height="48dp"
             android:gravity="center"

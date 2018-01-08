@@ -4,26 +4,23 @@
 package com.moymac.meritapp.Adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.VideoView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.moymac.meritapp.CustomItemClickListener;
 import com.moymac.meritapp.Models.InputsItem;
 import com.moymac.meritapp.R;
-import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.net.URLConnection;
 import java.util.List;
+
+import jp.wasabeef.richeditor.RichEditor;
 
 
 /**
@@ -40,20 +37,34 @@ public class InputsAdapterRVFixed extends RecyclerView.Adapter<InputsAdapterRVFi
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView imageView;
-        public EditText editText;
+       // public ImageView imageView;
+        //public EditText editText;
+
+        public RichEditor editor;
       //  public TextView timeTV;
-        public VideoView videoView;
+      //  public VideoView videoView;
       //  public MyCustomEditTextListener myCustomEditTextListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
        //     timeTV = itemView.findViewById(R.id.input_time_tv);
-            editText = itemView.findViewById(R.id.input_content_et);
+            editor = itemView.findViewById(R.id.editor);
+            //editor.setEditorHeight(200);
+           // editor.setEditorWidth(15);
+            editor.setEditorFontSize(15);
+            editor.setEditorFontColor(Color.DKGRAY);
+            //mEditor.setEditorBackgroundColor(Color.BLUE);
+            editor.setBackgroundColor(Color.WHITE);
+            //mEditor.setBackgroundResource(R.drawable.bg);
+            //editor.setPadding(10, 10, 10, 10);
+            //mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
+            editor.setPlaceholder("...");
+            //mEditor.setInputEnabled(false);
+//            editText = itemView.findViewById(R.id.input_content_et);
 //            this.myCustomEditTextListener = myCustomEditTextListener;
 //            editText.addTextChangedListener(myCustomEditTextListener);
-            imageView = itemView.findViewById(R.id.input_content_iv);
-            videoView = itemView.findViewById(R.id.input_content_video);
+       //     imageView = itemView.findViewById(R.id.input_content_iv);
+        //    videoView = itemView.findViewById(R.id.input_content_video);
             //editText.requestFocus();
         }
 
@@ -83,51 +94,41 @@ public class InputsAdapterRVFixed extends RecyclerView.Adapter<InputsAdapterRVFi
     public void onBindViewHolder(final InputsAdapterRVFixed.ViewHolder holder, int position) {
         InputsItem inputsItem = inputsList.get(position);
         int step = inputsItem.getStep();
-        Object content = inputsItem.getContent();
+        String content = inputsItem.getContent().toString();
         int cont_type = inputsItem.getContent_type();
        // Date creationTime = inputsItem.getCreationTime();
        // holder.timeTV.setText(creationTime.toString());
       //  holder.editText.setText(mDataset[holder.getAdapterPosition()]);
 
 
-        switch (cont_type){
-            case 1:
-                holder.editText.setVisibility(View.VISIBLE);
-                holder.editText.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                            //Log.e("touch", "en EditText");
-                            listener.onItemClick(v, holder.getAdapterPosition());
-                        }
-                        return false;
-                    }
-                });
-                holder.editText.setText(content.toString());
-                holder.imageView.setVisibility(View.GONE);
-                holder.videoView.setVisibility(View.GONE);
-                break;
-            case 2:
-                holder.editText.setVisibility(View.GONE);
-                holder.imageView.setVisibility(View.VISIBLE);
-                holder.imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+//        holder.editText.setVisibility(View.VISIBLE);
+        holder.editor.setVisibility(View.VISIBLE);
 
-                    }
-                });
-                Picasso.with(mContext).load((String) inputsItem.getContent()).into(holder.imageView);
-                holder.videoView.setVisibility(View.GONE);
-                break;
-            case 3:
-                holder.editText.setVisibility(View.GONE);
-                //holder.editText.setText(content.toString());
-                holder.imageView.setVisibility(View.GONE);
-                holder.videoView.setVisibility(View.VISIBLE);
-                Picasso.with(mContext).load((String) inputsItem.getContent()).into(holder.imageView);
+        holder.editor.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    //Log.e("touch", "en EditText");
+                    listener.onItemClick(v, holder.getAdapterPosition());
+                }
+                return false;
+            }
+        });
+//        holder.editText.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                    //Log.e("touch", "en EditText");
+//                    listener.onItemClick(v, holder.getAdapterPosition());
+//                }
+//                return false;
+//            }
+//        });
+//        holder.editText.setText(content.toString());
+               // holder.editText.setText(content.toString());
+            //    holder.imageView.setVisibility(View.GONE);
+            //    holder.videoView.setVisibility(View.GONE);
 
-                break;
-        }
 //
 //        if (cont_type == ){
 //            holder.editText.setVisibility(View.VISIBLE);

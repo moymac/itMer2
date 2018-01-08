@@ -35,5 +35,9 @@
     <color name="steps_background">#FFFFFF</color>
     <color name="children_steps_background">#F9F9F9</color>
     <color name="input_background">#F25835</color>
+    <color name="pink">#FF1493</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="darkgreen">#006400</color>
+    <color name="darktext">#333333</color>
 
 </resources>
